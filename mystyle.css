@@ -4,33 +4,21 @@ html{
     background: linear-gradient(to right, #D5D8DC, #E5E8E8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Crimson Pro', sans-serif;
 }
 
 body{
     color: #17202A;
 }
-table {
-    margin-left: auto;
+.boton{
+    background-color:#e56b6f;
+    border: none;
+    padding: 15px 32px;
     margin-right: auto;
-    border: 1px solid black;
-    border-collapse: collapse;
-    width: 60%;
-}
-th, td{
-    border: 1px solid black;
-    border-collapse: collapse;
+    margin-left: auto;
     text-align: center;
-}
-.headerBig{
-    color: #17202A;
-    padding-bottom: 20px;
-    text-align: center;
-    font-size:xx-large;
-}
-.headerMedium{
-    color: #17202A;
-    padding-bottom: 20px;
-    text-align: center;
-    font-size:large;
+    font-family: 'Crimson Pro','sans-serif';
+    font-size: large;
+    font-weight: bold;
+    border-radius: 10px;
 }

@@ -7,17 +7,17 @@
         <title>Color Converter</title>
         <link rel="stylesheet" href="mystyle.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100&display=swap" rel="stylesheet">        
+        <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300&display=swap" rel="stylesheet">
     </head>
     <body>
         <script src="js/main.js"></script>
         <div id="Forms" >
             <form name="frmConversor" >
                 <label>RGB:</label>
-                <input type="text" id="RGB" name="RGB"><br><br>
+                <input type="text" id="RGB" name="RGB" onkeypress="cambiaBoton()" onblur="cambiaBoton()"><br><br>
                 <label>HEX:</label>
-                <input type="text" id="HEX" name="HEX"><br><br>
-                <input type="button" value="Convert" onclick="Convertir()">
+                <input type="text" id="HEX" name="HEX" onkeypress="cambiaBoton()" onblur="cambiaBoton()"><br><br>
+                <input id="boton" class="boton" type="button" value="Convert" onclick="Convertir()">
             </form>
         </div>
         
