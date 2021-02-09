@@ -10,20 +10,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@100&display=swap" rel="stylesheet">        
     </head>
     <body>
-        <script>
-            function ControlInputs(){
-                if ((document.forms['frmConversor'].RGB.value ==="")&& (document.forms['frmConversor'].HEX.value==="")){
-                    alert("Both fields empty!");
-                }else if (document.forms['frmConversor'].RGB.value ===""){
-                    alert("RGB empty! HEX IS "+ document.forms['frmConversor'].HEX.value );
-                }else if(document.forms['frmConversor'].HEX.value===""){
-                    alert("HEX empty!")
-                }
-            }
-            function Convertir(){
-                ControlInputs();
-            }
-        </script>
+        <script src="js/main.js"></script>
         <div id="Forms" >
             <form name="frmConversor" >
                 <label>RGB:</label>
