@@ -11,15 +11,20 @@
     </head>
     <body>
         <script src="js/main.js"></script>
-        <div id="Forms" >
+        <div id="Forms" class="contenedorForms">
+            <div id="tarjetaColorCSS" class="tarjetaColorCSS">
+                <div id="cardColor" class="colores">
+                </div>
+            </div>
             <form name="frmConversor" >
-                <label>RGB:</label>
-                <input type="text" id="RGB" name="RGB" onkeypress="cambiaBoton()" onblur="cambiaBoton()"><br><br>
-                <label>HEX:</label>
-                <input type="text" id="HEX" name="HEX" onkeypress="cambiaBoton()" onblur="cambiaBoton()"><br><br>
-                <input id="boton" class="boton" type="button" value="Convert" onclick="Convertir()">
+                <label>RGB:</label><br>
+                <input type="text" id="RGB" class="inputs" name="RGB" onkeypress="cambiaBoton()" onblur="cambiaBoton()"><br><br>
+                <label>HEX:</label><br>
+                <input type="text" id="HEX" class="inputs" name="HEX" onkeypress="cambiaBoton()" onblur="cambiaBoton()"><br><br>
+                <div class="contenedorBoton">
+                    <input type="button" id="boton" class="boton"  value="Convert" onclick="Convertir()">
+                </div>                
             </form>
-        </div>
-        
+        </div>        
     </body>
 </html>

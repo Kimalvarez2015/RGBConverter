@@ -5,17 +5,61 @@ html{
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: 'Crimson Pro', sans-serif;
+    font-size: large;
 }
 
 body{
     color: #17202A;
 }
+form{
+    margin: auto;
+    margin-top: 10px;
+    width: 180px;
+    height: 400px;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+.contenedorForms{
+    margin-top: 10%;
+}
+.tarjetaColorCSS{
+    background-color: white;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 180px;
+    height: 300px; 
+    margin: auto;
+    border-radius: 10px;
+    visibility: hidden;
+}
+.colores{
+    background-color: black;
+    margin: auto;
+    width: 170px;
+    height: 250px;
+    border-radius: 10px;
+}
+
+.inputs{
+    text-align: center;
+    font-family: 'Crimson Pro','sans-serif';
+    font-size: large;
+    border: none;
+    margin: auto;
+    border-radius: 10px;
+}
+.contenedorBoton{
+    margin: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+}
 .boton{
     background-color:#e56b6f;
     border: none;
-    padding: 15px 32px;
-    margin-right: auto;
-    margin-left: auto;
+    padding: 13px 32px;
+    margin: auto;
     text-align: center;
     font-family: 'Crimson Pro','sans-serif';
     font-size: large;
