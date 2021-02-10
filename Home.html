@@ -16,13 +16,13 @@
                 <div id="cardColor" class="colores">
                 </div>
             </div>
-            <form name="frmConversor" >
+            <form name="frmConversor" autocomplete="off">
                 <label>RGB:</label><br>
                 <input type="text" id="RGB" class="inputs" name="RGB" onkeypress="cambiaBoton()" onblur="cambiaBoton()" onfocus="vaciaHEX()"><br><br>
                 <label>HEX:</label><br>
                 <input type="text" id="HEX" class="inputs" name="HEX" onkeypress="cambiaBoton()" onblur="cambiaBoton()" onfocus="vaciaRGB()"><br><br>
                 <div class="contenedorBoton">
-                    <input type="button" id="boton" class="boton"  value="Convert" onclick="Convertir()">
+                    <input type="button" id="boton" class="boton"  value="Convert" onclick="convertirValores()">
                 </div>                
             </form>
         </div>        

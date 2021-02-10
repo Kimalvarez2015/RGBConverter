@@ -1,4 +1,4 @@
-function ControlInputs(){
+function controlInputs(){
     if ((document.forms['frmConversor'].RGB.value ==="")&& (document.forms['frmConversor'].HEX.value==="")){
         alert("Both fields empty.\nNo conversion will be done.");
     }
@@ -12,15 +12,19 @@ function cambiaBoton(){
     }
 }
 function vaciaRGB(){
-    document.forms['frmConversor'].RGB.value="";
-    cambiaBoton();
+    if(document.forms['frmConversor'].HEX.value !==""){
+        document.forms['frmConversor'].RGB.value="";
+        cambiaBoton();
+    }
 }
 function vaciaHEX(){
-    document.forms['frmConversor'].HEX.value="";
-    cambiaBoton();
+    if(document.forms['frmConversor'].RGB.value !==""){
+        document.forms['frmConversor'].HEX.value="";
+        cambiaBoton();
+    }
 }
-function Convertir(){
-    ControlInputs();
+function convertirValores(){
+    controlInputs();
     if(document.forms['frmConversor'].HEX.value===""){
         //ESTE ES EL IF QUE COMPRUEBA EL VALOR DE HEX VACIO PARA TRABAJAR EN RGB
         var RGB = document.forms['frmConversor'].RGB.value;
@@ -30,4 +34,5 @@ function Convertir(){
         var HEX = document.forms['frmConversor'].HEX.value;
         document.forms['frmConversor'].RGB.value=HEX;
     }
+    // ELEMENTO PARA ENCENDER LA TARJETA PANTONE document.getElementById('tarjetaColorCSS').style.visibility= "visible";
 }
