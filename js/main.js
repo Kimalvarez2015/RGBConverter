@@ -11,12 +11,23 @@ function cambiaBoton(){
         document.forms['frmConversor'].boton.style.backgroundColor= "#e56b6f";
     }
 }
+function vaciaRGB(){
+    document.forms['frmConversor'].RGB.value="";
+    cambiaBoton();
+}
+function vaciaHEX(){
+    document.forms['frmConversor'].HEX.value="";
+    cambiaBoton();
+}
 function Convertir(){
     ControlInputs();
-    if (document.forms['frmConversor'].RGB.value ===""){
-        alert("RGB empty! HEX IS "+ document.forms['frmConversor'].HEX.value );
-    }else if(document.forms['frmConversor'].HEX.value===""){
+    if(document.forms['frmConversor'].HEX.value===""){
+        //ESTE ES EL IF QUE COMPRUEBA EL VALOR DE HEX VACIO PARA TRABAJAR EN RGB
         var RGB = document.forms['frmConversor'].RGB.value;
-        alert(RGB);
+        document.forms['frmConversor'].HEX.value=RGB;
+    }else if (document.forms['frmConversor'].RGB.value ===""){
+        //ESTE ES EL IF QUE COMPRUEBA EL VALOR DE RGB VACIO PARA TRABAJAR EN HEX
+        var HEX = document.forms['frmConversor'].HEX.value;
+        document.forms['frmConversor'].RGB.value=HEX;
     }
 }
