@@ -1,7 +1,12 @@
-function controlInputs(){
+function controlInputsEjecucion(){
+    var contLargoRGB = document.forms['frmConversor'].RGB.value;
+
     if ((document.forms['frmConversor'].RGB.value ==="")&& (document.forms['frmConversor'].HEX.value==="")){
         alert("Both fields empty.\nNo conversion will be done.");
-    }
+    }else if(contLargoRGB.length ===11){
+        convertirValores();
+    
+    }    
 }
 function cambiaBoton(){
     //Cambia el color de fondo del boton dependiendo de si alguno de los input texts tiene contenido o no.
@@ -24,7 +29,6 @@ function vaciaHEX(){
     }
 }
 function convertirValores(){
-    controlInputs();
     if((document.forms['frmConversor'].HEX.value ==="") && (document.forms['frmConversor'].RGB.value !=="")){
         //ESTE ES EL IF QUE COMPRUEBA EL VALOR DE HEX VACIO PARA TRABAJAR EN RGB
         var RGB = document.forms['frmConversor'].RGB.value;
