@@ -1,12 +1,19 @@
 function controlInputsEjecucion(){
     var contLargoRGB = document.forms['frmConversor'].RGB.value;
+    var contRedRGB = Number(contLargoRGB.substr(0,3));
+    var contGreenRGB = Number(contLargoRGB.substr(4,3));
+    var contBlueRGB = Number(contLargoRGB.substr(8,3));
 
     if ((document.forms['frmConversor'].RGB.value ==="")&& (document.forms['frmConversor'].HEX.value==="")){
         alert("Both fields empty.\nNo conversion will be done.");
-    }else if(contLargoRGB.length ===11){
+    }else if(contLargoRGB.length !==11 || (contRedRGB <0 || contRedRGB >255 ) || (contGreenRGB <0 || contGreenRGB >255 ) || (contBlueRGB <0 || contBlueRGB >255 )){
+        //REVISAR ESTAS CONDICIONES PORQUE SE SIGUE EJECUTANDO AUN CUANDO LOS VALORES RGB SON INCORRECTOS
+        alert("Check RGB value");
+        document.forms['frmConversor'].RGB.value="";
+        cambiaBoton();
+    }else{
         convertirValores();
-    
-    }    
+    }
 }
 function cambiaBoton(){
     //Cambia el color de fondo del boton dependiendo de si alguno de los input texts tiene contenido o no.
