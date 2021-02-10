@@ -24,7 +24,7 @@ form{
     margin-top: 10%;
 }
 .tarjetaColorCSS{
-    background-color: white;
+    background-color: seashell;
     padding-top: 10px;
     padding-left: 5px;
     padding-right: 5px;
@@ -35,7 +35,7 @@ form{
     visibility: hidden;
 }
 .colores{
-    background-color: black;
+    background-color:black;
     margin: auto;
     width: 170px;
     height: 250px;
