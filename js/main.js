@@ -6,13 +6,14 @@ function controlInputsEjecucion(){
 
     if ((document.forms['frmConversor'].RGB.value ==="")&& (document.forms['frmConversor'].HEX.value==="")){
         alert("Both fields empty.\nNo conversion will be done.");
-    }else if(contLargoRGB.length !==11 || (contRedRGB <0 || contRedRGB >255 ) || (contGreenRGB <0 || contGreenRGB >255 ) || (contBlueRGB <0 || contBlueRGB >255 )){
+    }else if(contLargoRGB.length ===11 && (contRedRGB >=0 && contRedRGB <=255 ) && (contGreenRGB >=0 && contGreenRGB <=255 ) && (contBlueRGB >=0 && contBlueRGB <=255 )){
         //REVISAR ESTAS CONDICIONES PORQUE SE SIGUE EJECUTANDO AUN CUANDO LOS VALORES RGB SON INCORRECTOS
+        convertirValores();
+        
+    }else{
         alert("Check RGB value");
         document.forms['frmConversor'].RGB.value="";
         cambiaBoton();
-    }else{
-        convertirValores();
     }
 }
 function cambiaBoton(){
@@ -35,6 +36,12 @@ function vaciaHEX(){
         cambiaBoton();
     }
 }
+function tarjetaPantone(_color){
+    //ACTIVA TARJETA
+    document.getElementById('tarjetaColorCSS').style.visibility= "visible";
+    //LE DA COLOR
+    document.getElementById('colorTarjeta').style.background = _color;
+}
 function convertirValores(){
     if((document.forms['frmConversor'].HEX.value ==="") && (document.forms['frmConversor'].RGB.value !=="")){
         //ESTE ES EL IF QUE COMPRUEBA EL VALOR DE HEX VACIO PARA TRABAJAR EN RGB
@@ -43,14 +50,26 @@ function convertirValores(){
         var greenRGB = Number(RGB.substr(4,3));
         var blueRGB = Number(RGB.substr(8,3));
         //ASIGNACION DE VARIABLES POR SEPARADO PARA OPERAR CON ELLAS. FUNCION NUMBER CONVIERTE EN NUMERO.
-        redRGB = redRGB.toString(16);
-        greenRGB = greenRGB.toString(16);
-        blueRGB = blueRGB.toString(16);
-        //FUNCION TOSTRING PARA CONVERTIR VALORES A HEXADECIMAL
+        redRGB = redRGB.toString(16).toUpperCase();
+        greenRGB = greenRGB.toString(16).toUpperCase();
+        blueRGB = blueRGB.toString(16).toUpperCase();
+        //FUNCION .toString CONVIERTE NUMERO EN STRING HEXADECIMAL. FUNCION .toUpperCase LO PONE EN MAYUS
+                if(redRGB.length===1){
+            redRGB = "0"+redRGB;
+        }
+        if(greenRGB.length===1){
+            greenRGB = "0"+greenRGB;
+        }
+        if(blueRGB.length === 1){
+            blueRGB = "0"+blueRGB;
+        }
+        //CONTROLES PARA CUANDO LOS VALORES DE R,G,B SON <=16
         document.forms['frmConversor'].HEX.value=("#"+redRGB+greenRGB+blueRGB);
         //DAMOS VALOR AL INPUT EN HEX
-        document.getElementById('tarjetaColorCSS').style.visibility= "visible";
-        document.getElementById('colorTarjeta').style.background = document.forms['frmConversor'].HEX.value;
+        //document.getElementById('tarjetaColorCSS').style.visibility= "visible";
+        //document.getElementById('colorTarjeta').style.background = document.forms['frmConversor'].HEX.value;
+        tarjetaPantone(document.forms['frmConversor'].HEX.value);
+        //HACEMOS VISIBLE LA TARJETA Y CAMBIAMOS EL VALOR. POSIBLE NUEVA FUNCION EN CAMINO.
         redRGB = 0;
         greenRGB = 0;
         blueRGB = 0;
