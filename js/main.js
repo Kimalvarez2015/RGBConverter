@@ -54,10 +54,10 @@ function convertirValores(){
         greenRGB = greenRGB.toString(16).toUpperCase();
         blueRGB = blueRGB.toString(16).toUpperCase();
         //FUNCION .toString CONVIERTE NUMERO EN STRING HEXADECIMAL. FUNCION .toUpperCase LO PONE EN MAYUS
-                if(redRGB.length===1){
+        if(redRGB.length === 1){
             redRGB = "0"+redRGB;
         }
-        if(greenRGB.length===1){
+        if(greenRGB.length === 1){
             greenRGB = "0"+greenRGB;
         }
         if(blueRGB.length === 1){
@@ -66,10 +66,8 @@ function convertirValores(){
         //CONTROLES PARA CUANDO LOS VALORES DE R,G,B SON <=16
         document.forms['frmConversor'].HEX.value=("#"+redRGB+greenRGB+blueRGB);
         //DAMOS VALOR AL INPUT EN HEX
-        //document.getElementById('tarjetaColorCSS').style.visibility= "visible";
-        //document.getElementById('colorTarjeta').style.background = document.forms['frmConversor'].HEX.value;
         tarjetaPantone(document.forms['frmConversor'].HEX.value);
-        //HACEMOS VISIBLE LA TARJETA Y CAMBIAMOS EL VALOR. POSIBLE NUEVA FUNCION EN CAMINO.
+        //HACEMOS VISIBLE LA TARJETA Y CAMBIAMOS EL VALOR CON UNA FUNCION POR SEPARADO.
         redRGB = 0;
         greenRGB = 0;
         blueRGB = 0;
