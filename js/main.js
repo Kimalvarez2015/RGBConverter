@@ -4,16 +4,20 @@ function controlInputsEjecucion(){
     var contGreenRGB = Number(contLargoRGB.substr(4,3));
     var contBlueRGB = Number(contLargoRGB.substr(8,3));
 
-    if ((document.forms['frmConversor'].RGB.value ==="")&& (document.forms['frmConversor'].HEX.value==="")){
-        alert("Both fields empty.\nNo conversion will be done.");
-    }else if(contLargoRGB.length ===11 && (contRedRGB >=0 && contRedRGB <=255 ) && (contGreenRGB >=0 && contGreenRGB <=255 ) && (contBlueRGB >=0 && contBlueRGB <=255 )){
-        //REVISAR ESTAS CONDICIONES PORQUE SE SIGUE EJECUTANDO AUN CUANDO LOS VALORES RGB SON INCORRECTOS
-        convertirValores();
-        
-    }else{
+    if ((document.forms['frmConversor'].RGB.value ==="")&& (document.forms['frmConversor'].HEX.value ==="")){
+        cambiaBoton();
         document.forms['frmConversor'].RGB.value="";
         document.forms['frmConversor'].HEX.value="";
+    }else if(contLargoRGB.length ===11 && (contRedRGB >=0 && contRedRGB <=255 ) && (contGreenRGB >=0 && contGreenRGB <=255 ) && (contBlueRGB >=0 && contBlueRGB <=255 )){
+        //REVISAR ESTAS CONDICIONES PORQUE SE SIGUE EJECUTANDO AUN CUANDO LOS VALORES RGB SON INCORRECTOS
+        convertirValoresRGB();
+        
+    }else if ((document.forms['frmConversor'].RGB.value ==="") && (document.forms['frmConversor'].HEX.value !=="")){
+        convertirValoresHEX();
+    }else {
         cambiaBoton();
+        document.forms['frmConversor'].RGB.value="";
+        document.forms['frmConversor'].HEX.value="";
     }
 }
 function cambiaBoton(){
@@ -42,9 +46,7 @@ function tarjetaPantone(_color){
     //LE DA COLOR CON EL VALOR QUE VIENE DEFINIDO EN LA VARIABLE DE CLASE QUE LE DAMOS DESDE convertirValores()
     document.getElementById('colorTarjeta').style.background = _color;
 }
-function convertirValores(){
-    if((document.forms['frmConversor'].HEX.value ==="") && (document.forms['frmConversor'].RGB.value !=="")){
-        //ESTE ES EL IF QUE COMPRUEBA EL VALOR DE HEX VACIO PARA TRABAJAR EN RGB
+function convertirValoresRGB(){
         var RGB = document.forms['frmConversor'].RGB.value;
         var redRGB = Number(RGB.substr(0,3));
         var greenRGB = Number(RGB.substr(4,3));
@@ -71,22 +73,42 @@ function convertirValores(){
         redRGB = 0;
         greenRGB = 0;
         blueRGB = 0;
-    }else if ((document.forms['frmConversor'].RGB.value ==="") && (document.forms['frmConversor'].HEX.value !=="")){
-        //ESTE ES EL IF QUE COMPRUEBA EL VALOR DE RGB VACIO PARA TRABAJAR EN HEX
-        var HEX = document.forms['frmConversor'].HEX.value;
-        var redHEX = 0;
-        var greenHEX = 0;
-        var blueHEX = 0;
-        if(HEX.substr(0,1) !== "#"){
-            HEX = "#" + HEX;
-            document.forms['frmConversor'].HEX.value = HEX;
-        }
-        redHEX = parseInt(HEX.substr(1,2),10);
-        greenHEX = parseInt(HEX.substr(3,2),10);
-        blueHEX = parseInt(HEX.substr(5,2),10);
-        
-        document.forms['frmConversor'].RGB.value =  (redHEX + greenHEX + blueHEX)
-        tarjetaPantone(document.forms['frmConversor'].HEX.value);
-    }
     // ELEMENTO PARA ENCENDER LA TARJETA PANTONE document.getElementById('tarjetaColorCSS').style.visibility= "visible";
+}
+function convertirValoresHEX(){
+    var HEX = document.forms['frmConversor'].HEX.value;
+    var redHEX = 0;
+    var greenHEX = 0; 
+    var blueHEX = 0;
+    if(HEX.substr(0,1) !== "#"){
+        HEX = "#" + HEX;
+        document.forms['frmConversor'].HEX.value = HEX;
+    }
+    redHEX = parseInt(HEX.substr(1,2),16);
+    greenHEX = parseInt(HEX.substr(3,2),16);
+    blueHEX = parseInt(HEX.substr(5,2),16);
+    //redHEX = HEX.substr(1,2);
+    //greenHEX = HEX.substr(3,2);
+    //blueHEX = HEX.substr(5,2);
+    redHEX = redHEX.toString();
+    greenHEX = greenHEX.toString();
+    blueHEX = blueHEX.toString();
+    if (redHEX.length !== 3){
+        switch(redHEX.length){
+            case 1: redHEX = "00"+redHEX
+            case 2: redHEX = "0"+redHEX
+        }
+    }else if (greenHEX.length !== 3){
+        switch(greenHEX.length){
+            case 1: greenHEX = "00"+greenHEX
+            case 2: greenHEX = "0"+greenHEX
+        }
+    }else if (blueHEX.length !== 3){
+        switch(blueHEX.length){
+            case 1: blueHEX = "00"+blueHEX
+            case 2: blueHEX = "0"+blueHEX
+        }
+    }
+    document.forms['frmConversor'].RGB.value =  ( redHEX + "," + greenHEX + "," + blueHEX)
+    tarjetaPantone(document.forms['frmConversor'].HEX.value);
 }
