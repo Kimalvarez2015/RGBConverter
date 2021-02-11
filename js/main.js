@@ -39,7 +39,7 @@ function vaciaHEX(){
 function tarjetaPantone(_color){
     //ACTIVA TARJETA
     document.getElementById('tarjetaColorCSS').style.visibility= "visible";
-    //LE DA COLOR
+    //LE DA COLOR CON EL VALOR QUE VIENE DEFINIDO EN LA VARIABLE DE CLASE QUE LE DAMOS DESDE convertirValores()
     document.getElementById('colorTarjeta').style.background = _color;
 }
 function convertirValores(){
