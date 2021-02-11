@@ -11,8 +11,8 @@ function controlInputsEjecucion(){
         convertirValores();
         
     }else{
-        alert("Check RGB value");
         document.forms['frmConversor'].RGB.value="";
+        document.forms['frmConversor'].HEX.value="";
         cambiaBoton();
     }
 }
@@ -64,7 +64,7 @@ function convertirValores(){
             blueRGB = "0"+blueRGB;
         }
         //CONTROLES PARA CUANDO LOS VALORES DE R,G,B SON <=16
-        document.forms['frmConversor'].HEX.value=("#"+redRGB+greenRGB+blueRGB);
+        document.forms['frmConversor'].HEX.value = ("#"+redRGB+greenRGB+blueRGB);
         //DAMOS VALOR AL INPUT EN HEX
         tarjetaPantone(document.forms['frmConversor'].HEX.value);
         //HACEMOS VISIBLE LA TARJETA Y CAMBIAMOS EL VALOR CON UNA FUNCION POR SEPARADO.
@@ -74,7 +74,19 @@ function convertirValores(){
     }else if ((document.forms['frmConversor'].RGB.value ==="") && (document.forms['frmConversor'].HEX.value !=="")){
         //ESTE ES EL IF QUE COMPRUEBA EL VALOR DE RGB VACIO PARA TRABAJAR EN HEX
         var HEX = document.forms['frmConversor'].HEX.value;
-        document.forms['frmConversor'].RGB.value=HEX;
+        var redHEX = 0;
+        var greenHEX = 0;
+        var blueHEX = 0;
+        if(HEX.substr(0,1) !== "#"){
+            HEX = "#" + HEX;
+            document.forms['frmConversor'].HEX.value = HEX;
+        }
+        redHEX = parseInt(HEX.substr(1,2),10);
+        greenHEX = parseInt(HEX.substr(3,2),10);
+        blueHEX = parseInt(HEX.substr(5,2),10);
+        
+        document.forms['frmConversor'].RGB.value =  (redHEX + greenHEX + blueHEX)
+        tarjetaPantone(document.forms['frmConversor'].HEX.value);
     }
     // ELEMENTO PARA ENCENDER LA TARJETA PANTONE document.getElementById('tarjetaColorCSS').style.visibility= "visible";
 }
